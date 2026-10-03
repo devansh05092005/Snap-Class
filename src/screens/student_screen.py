@@ -41,11 +41,11 @@ def student_screen():
 
             if num_faces == 0:
                 st.warning('Face not Found!')
-            if num_faces > 1:
+            elif num_faces > 1:
                 st.warning('Multiple Face Found!')
             else:
                 if detected:
-                    student_id = list(detected.key())[0]
+                    student_id = list(detected.keys())[0]
                     all_students = get_all_students()
                     student = next((s for s in all_students if s['student_id']==student_id), None)
 
