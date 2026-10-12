@@ -118,6 +118,8 @@ def login_teacher(username, password):
         return True
 
     return False
+
+
 def teacher_screen_login():
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
     with c1:
@@ -163,6 +165,7 @@ def register_teacher(teacher_username, teacher_name, teacher_password, teacher_p
         return True, "Successfully Created!, Login Now"
     except Exception as e:
         return False, "Unexpected Error!"
+
     
 def teacher_screen_register():
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
