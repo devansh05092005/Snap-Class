@@ -105,6 +105,11 @@ def teacher_tab_manage_subjects():
 def teacher_tab_attendance_records():
     st.header('Attendence Records')
 
+
+
+
+
+
 def login_teacher(username, password):
     if not username or not password:
         return False
@@ -118,7 +123,6 @@ def login_teacher(username, password):
         return True
 
     return False
-
 
 def teacher_screen_login():
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
@@ -152,6 +156,10 @@ def teacher_screen_login():
     footer_dashboard()
 
 
+
+
+
+
 def register_teacher(teacher_username, teacher_name, teacher_password, teacher_pass_confirm):
     if not teacher_username or not teacher_name or not teacher_password:
         return False, "All fields are required!"
@@ -165,8 +173,7 @@ def register_teacher(teacher_username, teacher_name, teacher_password, teacher_p
         return True, "Successfully Created!, Login Now"
     except Exception as e:
         return False, "Unexpected Error!"
-
-    
+ 
 def teacher_screen_register():
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
     with c1:
