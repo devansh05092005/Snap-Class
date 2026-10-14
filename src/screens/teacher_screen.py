@@ -19,6 +19,10 @@ def teacher_screen():
     elif st.session_state.teacher_login_type=="register":
         teacher_screen_register()
 
+
+
+
+
 def teacher_dashboard():
     teacher_data = st.session_state.teacher_data
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
@@ -66,6 +70,12 @@ def teacher_dashboard():
         teacher_tab_manage_subjects()
     if st.session_state.current_teacher_tab == "attendance_records":
         teacher_tab_manage_subjects()
+
+    footer_dashboard()
+
+
+
+
 
 def teacher_tab_take_attendance():
     st.header('Take AI Attendence')
