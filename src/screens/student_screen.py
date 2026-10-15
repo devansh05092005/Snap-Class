@@ -36,7 +36,52 @@ def student_dashboard():
 
     st.divider()
 
+    with st.spinner('Loading your enrolled subjects..'):
+        subjects = get_student_subjects(student_id)
+        logs = get_student_attendance(student_id)
+
+    stats_map = {}
+
+    for log in logs:
+        sid = log['subject_id']
+
+        if sid not in stats_map:
+            stats_map[sid] = {"total":0, "attended": 0}
+
+        stats_map[sid]['total'] +=1
+
+        if log.get('is_present'):
+            stats_map[sid]['attended'] += 1
+
+
+    cols = st.columns(2)
+    for i, sub_node in enumerate(subjects):
+        sub = sub_node['subjects']
+        sid = sub['subject_id']
+
+
+        stats = stats_map.get(sid,{"total":0, "attended": 0} )
+        def unenroll_button():
+                if st.button("Unenroll from tihs course", type='tertiary', width='stretch', icon=':material/delete_forever:'):
+                    unenroll_student_to_subject(student_id, sid)
+                    st.toast(f'Unenrolled from {sub['name']} successfully!')
+                    st.rerun()
+
+        with cols[i % 2]:
+
+            subject_card(
+                name = sub['name'],
+                code =sub['subject_code'],
+                section = sub['section'],
+                stats = [
+                    ('📅', 'Total', stats['total']),
+                    ('✅', 'Attended', stats['attended']),
+                ],
+                footer_callback=unenroll_button
+            )
     footer_dashboard()
+
+
 
 
 def student_screen():
