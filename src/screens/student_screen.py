@@ -71,7 +71,7 @@ def student_dashboard():
 
             subject_card(
                 name = sub['name'],
-                code =sub['subject_code'],
+                code = sub['subject_code'],
                 section = sub['section'],
                 stats = [
                     ('📅', 'Total', stats['total']),
